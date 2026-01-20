@@ -1,0 +1,12 @@
+Below are some sample authentication logs 
+
+Jan 19 10:23:15 server sshd[12345]: Failed password for invalid user admin from 192.168.1.100 port 22 ssh2
+Jan 19 10:23:20 server sshd[12346]: Failed password for invalid user root from 192.168.1.100 port 22 ssh2
+Jan 19 10:23:25 server sshd[12347]: Failed password for invalid user admin from 192.168.1.100 port 22 ssh2
+Jan 19 10:25:10 server sshd[12348]: Accepted password for john from 10.0.0.50 port 22 ssh2
+Jan 19 10:30:45 server sshd[12349]: Failed password for invalid user test from 45.123.67.89 port 22 ssh2
+Jan 19 10:35:12 server sshd[12350]: Accepted password for alice from 10.0.0.75 port 22 ssh2
+Jan 19 11:15:30 server sudo: john : TTY=pts/0 ; PWD=/home/john ; USER=root ; COMMAND=/bin/bash
+Jan 19 11:20:00 server kernel: [UFW BLOCK] IN=eth0 OUT= SRC=198.51.100.23 DST=10.0.0.1 
+Jan 19 11:25:45 server sshd[12351]: Connection closed by 203.0.113.45 port 58234 [preauth]
+Jan 19 11:30:10 server sshd[12352]: Invalid user hacker from 203.0.113.45 port 60000
