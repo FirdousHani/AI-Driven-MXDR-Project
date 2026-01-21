@@ -1,9 +1,8 @@
 
 ======================================================================
-  AUTH.LOG SECURITY ANALYZER - Processing 12 log entries
+  AUTH.LOG SECURITY ANALYZER - Processing 10 log entries
 ======================================================================
-[Warning] Could not parse line 1: Below are some sample authentication logs
-[Entry 3]
+[Entry 1]
 
 Timestamp:   Jan 19 10:23:15 ← When it happened
 Hostname:    server ← Which server
@@ -13,7 +12,7 @@ Message:     Failed password for invalid user admin from 192.168.1.100 port 22 s
 IP Address:  192.168.1.100 ← Source IP
 Username:    admin ← Target user
 ----------------------------------------------------------------------
-[Entry 4]
+[Entry 2]
 
 Timestamp:   Jan 19 10:23:20 ← When it happened
 Hostname:    server ← Which server
@@ -23,7 +22,7 @@ Message:     Failed password for invalid user root from 192.168.1.100 port 22 ss
 IP Address:  192.168.1.100 ← Source IP
 Username:    root ← Target user
 ----------------------------------------------------------------------
-[Entry 5]
+[Entry 3]
 
 Timestamp:   Jan 19 10:23:25 ← When it happened
 Hostname:    server ← Which server
@@ -33,7 +32,7 @@ Message:     Failed password for invalid user admin from 192.168.1.100 port 22 s
 IP Address:  192.168.1.100 ← Source IP
 Username:    admin ← Target user
 ----------------------------------------------------------------------
-[Entry 6]
+[Entry 4]
 
 Timestamp:   Jan 19 10:25:10 ← When it happened
 Hostname:    server ← Which server
@@ -43,7 +42,7 @@ Message:     Accepted password for john from 10.0.0.50 port 22 ssh2 ← What hap
 IP Address:  10.0.0.50 ← Source IP
 Username:    john ← Target user
 ----------------------------------------------------------------------
-[Entry 7]
+[Entry 5]
 
 Timestamp:   Jan 19 10:30:45 ← When it happened
 Hostname:    server ← Which server
@@ -53,7 +52,7 @@ Message:     Failed password for invalid user test from 45.123.67.89 port 22 ssh
 IP Address:  45.123.67.89 ← Source IP
 Username:    test ← Target user
 ----------------------------------------------------------------------
-[Entry 8]
+[Entry 6]
 
 Timestamp:   Jan 19 10:35:12 ← When it happened
 Hostname:    server ← Which server
@@ -63,7 +62,7 @@ Message:     Accepted password for alice from 10.0.0.75 port 22 ssh2 ← What ha
 IP Address:  10.0.0.75 ← Source IP
 Username:    alice ← Target user
 ----------------------------------------------------------------------
-[Entry 9]
+[Entry 7]
 
 Timestamp:   Jan 19 11:15:30 ← When it happened
 Hostname:    server ← Which server
@@ -72,7 +71,7 @@ Event Type:  PRIVILEGE_ESCALATION ← Classification
 Message:     john : TTY=pts/0 ; PWD=/home/john ; USER=root ; COMMAND=/bin/bash ← What happened
 Username:    john ← Target user
 ----------------------------------------------------------------------
-[Entry 10]
+[Entry 8]
 
 Timestamp:   Jan 19 11:20:00 ← When it happened
 Hostname:    server ← Which server
@@ -81,7 +80,7 @@ Event Type:  FIREWALL_BLOCK ← Classification
 Message:     [UFW BLOCK] IN=eth0 OUT= SRC=198.51.100.23 DST=10.0.0.1 ← What happened
 IP Address:  198.51.100.23 ← Source IP
 ----------------------------------------------------------------------
-[Entry 11]
+[Entry 9]
 
 Timestamp:   Jan 19 11:25:45 ← When it happened
 Hostname:    server ← Which server
@@ -90,7 +89,7 @@ Event Type:  CONNECTION_CLOSED ← Classification
 Message:     Connection closed by 203.0.113.45 port 58234 [preauth] ← What happened
 IP Address:  203.0.113.45 ← Source IP
 ----------------------------------------------------------------------
-[Entry 12]
+[Entry 10]
 
 Timestamp:   Jan 19 11:30:10 ← When it happened
 Hostname:    server ← Which server
@@ -129,7 +128,7 @@ Event Type Distribution:
     • Threat Level: MEDIUM
     • Reputation: MALICIOUS
     • Failed Attempts: 3
-    • Targeted Usernames: root, admin
+    • Targeted Usernames: admin, root
     • Attack Pattern: Targeted attack
 
 ⚡ Privilege Escalation Analysis:
