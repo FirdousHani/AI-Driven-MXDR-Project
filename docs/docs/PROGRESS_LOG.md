@@ -116,6 +116,7 @@ Jan 19 10:23:15 server sshd[12345]: Failed password...
 
 ### Code Files:
 - `src/log_reader/utils.py` - Main analyzer
+- `data/formatted_auth.log`- Output of the analyzer file
 
 ### Statistics from Sample Logs:
 - Total entries: 10
