@@ -1,153 +1,168 @@
-"""
-Log Format Analyzer - Day 2
-Helps understand log structure by breaking it into parts
-"""
+import re
+from datetime import datetime
+from typing import Dict, List, Optional
 
-def analyze_log_line(line):
+def parse_log_line(line: str) -> Optional[Dict[str, str]]:
     """
-    Takes one log line and shows you its parts
+    Parse a single auth.log line into structured components.
     
-    Think of it like a grammar teacher showing you:
-    "The cat sat" = subject (cat) + verb (sat)
-    
-    We're doing the same for logs!
+    Args:
+        line: A single line from auth.log
+        
+    Returns:
+        Dictionary with parsed components or None if parsing fails
     """
+    # Pattern: Month Day Time Hostname Process: Message
+    pattern = r'^(\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2})\s+(\S+)\s+([^:]+):\s+(.+)$'
     
-    print(f"\n{'='*80}")
-    print("ANALYZING LOG LINE:")
-    print(f"{'='*80}")
-    print(f"Raw: {line.strip()}\n")
+    match = re.match(pattern, line.strip())
+    if not match:
+        return None
     
-    # Split by spaces (like cutting a sentence into words)
-    parts = line.strip().split()
+    timestamp, hostname, process, message = match.groups()
     
-    print("Components (broken into pieces):")
-    print("-" * 80)
-    
-    # Show each piece with a number
-    for i, part in enumerate(parts):
-        print(f"  [{i}] {part}")
-    
-    # Now explain what each piece means
-    print("\n" + "="*80)
-    print("INTERPRETATION (what it means):")
-    print("="*80)
-    
-    # Usually log format is:
-    # [0] Month, [1] Day, [2] Time = Timestamp
-    # [3] = Hostname
-    # [4] = Process
-    # [5+] = Message
-    
-    print(f"  Timestamp:  {' '.join(parts[0:3])} ← When it happened")
-    print(f"  Hostname:   {parts[3]} ← Which server")
-    print(f"  Process:    {parts[4]} ← What service")
-    print(f"  Message:    {' '.join(parts[5:])} ← What happened")
-    print("="*80 + "\n")
-
-
-def show_log_patterns():
-    """
-    Shows you common log formats you'll see
-    
-    Like a dictionary showing you different sentence structures
-    """
-    
-    print("\n" + "="*80)
-    print("COMMON LOG PATTERNS (What to look for)")
-    print("="*80 + "\n")
-    
-    patterns = {
-        "Authentication Logs (Login attempts)": {
-            "Format": "Month Day Time hostname sshd[PID]: message",
-            "Example": "Jan 19 10:23:15 server sshd[12345]: Failed password...",
-            "What to look for": "Failed/Accepted, usernames, source IPs"
-        },
-        "Firewall Logs (Blocked traffic)": {
-            "Format": "Month Day Time hostname kernel: [action] details",
-            "Example": "Jan 19 11:20:00 server kernel: [UFW BLOCK] SRC=1.2.3.4",
-            "What to look for": "BLOCK/ALLOW, source IPs, destination IPs"
-        },
-        "Sudo Logs (Admin commands)": {
-            "Format": "Month Day Time hostname sudo: user : COMMAND=...",
-            "Example": "Jan 19 11:15:30 server sudo: john : COMMAND=/bin/bash",
-            "What to look for": "Who used sudo, what command they ran"
-        }
+    return {
+        'timestamp': timestamp,
+        'hostname': hostname,
+        'process': process,
+        'message': message
     }
-    
-    for log_type, info in patterns.items():
-        print(f"📋 {log_type}")
-        print(f"   Format:  {info['Format']}")
-        print(f"   Example: {info['Example']}")
-        print(f"   Look for: {info['What to look for']}")
-        print()
 
-
-class LogStatistics:
+def format_log_entry(entry: Dict[str, str], colorize: bool = True) -> str:
     """
-    Counts things in your logs
+    Format a parsed log entry into human-readable format.
     
-    Like counting words in an essay
+    Args:
+        entry: Dictionary containing parsed log components
+        colorize: Whether to add ANSI color codes
+        
+    Returns:
+        Formatted string representation
     """
+    # ANSI color codes
+    CYAN = '\033[96m' if colorize else ''
+    GREEN = '\033[92m' if colorize else ''
+    YELLOW = '\033[93m' if colorize else ''
+    BLUE = '\033[94m' if colorize else ''
+    RESET = '\033[0m' if colorize else ''
+    GRAY = '\033[90m' if colorize else ''
     
-    def __init__(self, lines):
-        self.lines = lines
-    
-    def get_stats(self):
-        """Calculate basic numbers"""
-        
-        total_lines = len(self.lines)
-        total_chars = sum(len(line) for line in self.lines)
-        
-        # Find longest and shortest lines
-        line_lengths = [len(line.strip()) for line in self.lines if line.strip()]
-        
-        return {
-            'total_lines': total_lines,
-            'total_chars': total_chars,
-            'avg_length': total_chars // total_lines if total_lines > 0 else 0,
-            'longest': max(line_lengths) if line_lengths else 0,
-            'shortest': min(line_lengths) if line_lengths else 0
-        }
-    
-    def print_stats(self):
-        """Show the statistics nicely"""
-        
-        stats = self.get_stats()
-        
-        print("\n" + "="*80)
-        print("LOG FILE STATISTICS")
-        print("="*80)
-        print(f"  Total Lines:     {stats['total_lines']}")
-        print(f"  Total Characters: {stats['total_chars']:,}")
-        print(f"  Average Length:  {stats['avg_length']} characters")
-        print(f"  Longest Line:    {stats['longest']} characters")
-        print(f"  Shortest Line:   {stats['shortest']} characters")
-        print("="*80 + "\n")
+    formatted = f"""
+{CYAN}Timestamp:{RESET}  {entry['timestamp']} {GRAY}← When it happened{RESET}
+{GREEN}Hostname:{RESET}   {entry['hostname']} {GRAY}← Which server{RESET}
+{YELLOW}Process:{RESET}    {entry['process']}: {GRAY}← What service{RESET}
+{BLUE}Message:{RESET}    {entry['message']} {GRAY}← What happened{RESET}
+"""
+    return formatted
 
-
-# TEST THE CODE
-if __name__ == "__main__":
-    print("🟦 PROJECT 1 - DAY 2: Understanding Log Format\n")
+def parse_auth_log(log_file_path: str, output_file: Optional[str] = None, 
+                   colorize: bool = True) -> List[Dict[str, str]]:
+    """
+    Parse an entire auth.log file and display in human-readable format.
     
-    # Sample log line to analyze
-    sample = "Jan 19 10:23:15 server sshd[12345]: Failed password for invalid user admin from 192.168.1.100 port 22 ssh2"
+    Args:
+        log_file_path: Path to the auth.log file
+        output_file: Optional path to save formatted output
+        colorize: Whether to use colors in console output
+        
+    Returns:
+        List of parsed log entries
+    """
+    parsed_entries = []
+    formatted_output = []
     
-    # Break it down
-    analyze_log_line(sample)
-    
-    # Show patterns
-    show_log_patterns()
-    
-    # If you have the auth.log file, analyze it
     try:
-        with open("../../data/sample_logs/auth.log", 'r') as f:
+        with open(log_file_path, 'r') as f:
             lines = f.readlines()
         
-        stats = LogStatistics(lines)
-        stats.print_stats()
+        print(f"\n{'='*70}")
+        print(f"  AUTH.LOG PARSER - Processing {len(lines)} log entries")
+        print(f"{'='*70}\n")
         
-        print("✅ Day 2 Complete! You understand log structure now!")
+        for i, line in enumerate(lines, 1):
+            if not line.strip():
+                continue
+                
+            entry = parse_log_line(line)
+            if entry:
+                parsed_entries.append(entry)
+                formatted = format_log_entry(entry, colorize)
+                formatted_output.append(formatted)
+                
+                # Print to console
+                print(f"[Entry {i}]")
+                print(formatted)
+                print("-" * 70)
+            else:
+                print(f"[Warning] Could not parse line {i}: {line.strip()}\n")
+        
+        # Save to file if specified
+        if output_file:
+            with open(output_file, 'w') as f:
+                f.write(f"AUTH.LOG PARSER OUTPUT\n")
+                f.write(f"{'='*70}\n\n")
+                for i, formatted in enumerate(formatted_output, 1):
+                    f.write(f"[Entry {i}]\n")
+                    # Remove color codes for file output
+                    clean_output = re.sub(r'\033\[\d+m', '', formatted)
+                    f.write(clean_output)
+                    f.write("-" * 70 + "\n")
+            print(f"\n✓ Output saved to: {output_file}")
+        
+        print(f"\n{'='*70}")
+        print(f"  Successfully parsed {len(parsed_entries)} entries")
+        print(f"{'='*70}\n")
+        
+        return parsed_entries
         
     except FileNotFoundError:
-        print("⚠️  Run this from the right directory to see full stats")
+        print(f"Error: File '{log_file_path}' not found")
+        return []
+    except Exception as e:
+        print(f"Error processing log file: {e}")
+        return []
+
+def filter_failed_logins(entries: List[Dict[str, str]]) -> List[Dict[str, str]]:
+    """Filter entries for failed login attempts."""
+    return [e for e in entries if 'Failed password' in e['message'] or 
+            'Invalid user' in e['message']]
+
+def filter_successful_logins(entries: List[Dict[str, str]]) -> List[Dict[str, str]]:
+    """Filter entries for successful login attempts."""
+    return [e for e in entries if 'Accepted password' in e['message']]
+
+def get_unique_ips(entries: List[Dict[str, str]]) -> List[str]:
+    """Extract unique IP addresses from log entries."""
+    ip_pattern = r'\b(?:\d{1,3}\.){3}\d{1,3}\b'
+    ips = set()
+    
+    for entry in entries:
+        found_ips = re.findall(ip_pattern, entry['message'])
+        ips.update(found_ips)
+    
+    return sorted(list(ips))
+
+# Example usage
+if __name__ == "__main__":
+    # Path to your auth.log file (relative to project root)
+    log_path = "data/sample_logs/auth.log"
+    
+    # Parse the log file
+    entries = parse_auth_log(log_path, output_file="data/formatted_auth.log")
+    
+    # Additional analysis
+    if entries:
+        print("\n" + "="*70)
+        print("  SECURITY ANALYSIS")
+        print("="*70 + "\n")
+        
+        failed = filter_failed_logins(entries)
+        successful = filter_successful_logins(entries)
+        unique_ips = get_unique_ips(entries)
+        
+        print(f"Failed login attempts: {len(failed)}")
+        print(f"Successful logins: {len(successful)}")
+        print(f"Unique IP addresses: {len(unique_ips)}")
+        print(f"\nIP Addresses involved:")
+        for ip in unique_ips:
+            print(f"  • {ip}")
