@@ -91,41 +91,4 @@ Logs are diary entries that computers keep about every action.
 
 **Project Start Date:**19 January 2026  
 
-## Day 2: Log Format Analysis ✅
-**Date:** January 21, 2026
 
-### What I Built:
-- ✅ `analyze_log_line()` - Breaks log into components
-- ✅ `show_log_patterns()` - Shows common log formats
-- ✅ `LogStatistics` class - Calculates file metrics
-- ✅ Analyzed all 10 lines from auth.log
-
-### Key Learning:
-**Log Structure:**
-```
-[Timestamp] [Hostname] [Process] [Message]
-Jan 19 10:23:15 server sshd[12345]: Failed password...
-```
-
-**Log Types Identified:**
-1. **SSH Authentication** - Failed/Accepted login attempts
-2. **Firewall Events** - UFW blocks from external IPs
-3. **Sudo Commands** - Privilege escalation activities
-
-### Code Files:
-- `src/log_reader/utils.py` - Main analyzer
-
-### Statistics from Sample Logs:
-- Total entries: 10
-- Failed SSH attempts: 4
-- Successful logins: 2
-- Sudo commands: 1
-- Firewall blocks: 1
-
-### Next Steps (Day 3):
-- Parse logs with regex patterns
-- Extract specific fields (IPs, usernames, timestamps)
-- Create structured data from logs
-- Build LogEntry class
-
----
