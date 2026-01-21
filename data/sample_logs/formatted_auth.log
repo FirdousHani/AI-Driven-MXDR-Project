@@ -1,0 +1,180 @@
+
+======================================================================
+  AUTH.LOG SECURITY ANALYZER - Processing 12 log entries
+======================================================================
+[Warning] Could not parse line 1: Below are some sample authentication logs
+[Entry 3]
+
+Timestamp:   Jan 19 10:23:15 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12345]: ← What service
+Event Type:  FAILED_LOGIN ← Classification
+Message:     Failed password for invalid user admin from 192.168.1.100 port 22 ssh2 ← What happened
+IP Address:  192.168.1.100 ← Source IP
+Username:    admin ← Target user
+----------------------------------------------------------------------
+[Entry 4]
+
+Timestamp:   Jan 19 10:23:20 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12346]: ← What service
+Event Type:  FAILED_LOGIN ← Classification
+Message:     Failed password for invalid user root from 192.168.1.100 port 22 ssh2 ← What happened
+IP Address:  192.168.1.100 ← Source IP
+Username:    root ← Target user
+----------------------------------------------------------------------
+[Entry 5]
+
+Timestamp:   Jan 19 10:23:25 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12347]: ← What service
+Event Type:  FAILED_LOGIN ← Classification
+Message:     Failed password for invalid user admin from 192.168.1.100 port 22 ssh2 ← What happened
+IP Address:  192.168.1.100 ← Source IP
+Username:    admin ← Target user
+----------------------------------------------------------------------
+[Entry 6]
+
+Timestamp:   Jan 19 10:25:10 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12348]: ← What service
+Event Type:  SUCCESSFUL_LOGIN ← Classification
+Message:     Accepted password for john from 10.0.0.50 port 22 ssh2 ← What happened
+IP Address:  10.0.0.50 ← Source IP
+Username:    john ← Target user
+----------------------------------------------------------------------
+[Entry 7]
+
+Timestamp:   Jan 19 10:30:45 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12349]: ← What service
+Event Type:  FAILED_LOGIN ← Classification
+Message:     Failed password for invalid user test from 45.123.67.89 port 22 ssh2 ← What happened
+IP Address:  45.123.67.89 ← Source IP
+Username:    test ← Target user
+----------------------------------------------------------------------
+[Entry 8]
+
+Timestamp:   Jan 19 10:35:12 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12350]: ← What service
+Event Type:  SUCCESSFUL_LOGIN ← Classification
+Message:     Accepted password for alice from 10.0.0.75 port 22 ssh2 ← What happened
+IP Address:  10.0.0.75 ← Source IP
+Username:    alice ← Target user
+----------------------------------------------------------------------
+[Entry 9]
+
+Timestamp:   Jan 19 11:15:30 ← When it happened
+Hostname:    server ← Which server
+Process:     sudo: ← What service
+Event Type:  PRIVILEGE_ESCALATION ← Classification
+Message:     john : TTY=pts/0 ; PWD=/home/john ; USER=root ; COMMAND=/bin/bash ← What happened
+Username:    john ← Target user
+----------------------------------------------------------------------
+[Entry 10]
+
+Timestamp:   Jan 19 11:20:00 ← When it happened
+Hostname:    server ← Which server
+Process:     kernel: ← What service
+Event Type:  FIREWALL_BLOCK ← Classification
+Message:     [UFW BLOCK] IN=eth0 OUT= SRC=198.51.100.23 DST=10.0.0.1 ← What happened
+IP Address:  198.51.100.23 ← Source IP
+----------------------------------------------------------------------
+[Entry 11]
+
+Timestamp:   Jan 19 11:25:45 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12351]: ← What service
+Event Type:  CONNECTION_CLOSED ← Classification
+Message:     Connection closed by 203.0.113.45 port 58234 [preauth] ← What happened
+IP Address:  203.0.113.45 ← Source IP
+----------------------------------------------------------------------
+[Entry 12]
+
+Timestamp:   Jan 19 11:30:10 ← When it happened
+Hostname:    server ← Which server
+Process:     sshd[12352]: ← What service
+Event Type:  INVALID_USER ← Classification
+Message:     Invalid user hacker from 203.0.113.45 port 60000 ← What happened
+IP Address:  203.0.113.45 ← Source IP
+Username:    hacker ← Target user
+----------------------------------------------------------------------
+
+======================================================================
+  Successfully parsed 10 entries
+======================================================================
+
+======================================================================
+  🔒 SECURITY THREAT ANALYSIS
+======================================================================
+
+📊 Event Statistics:
+  Total Events: 10
+  Unique IP Addresses: 6
+  Unique Usernames: 6
+
+Event Type Distribution:
+  • FAILED_LOGIN: 4
+  • SUCCESSFUL_LOGIN: 2
+  • PRIVILEGE_ESCALATION: 1
+  • FIREWALL_BLOCK: 1
+  • CONNECTION_CLOSED: 1
+  • INVALID_USER: 1
+
+🚨 Brute Force Attack Detection:
+  Found 1 suspicious IP(s):
+
+  ⚠ IP: 192.168.1.100
+    • Threat Level: MEDIUM
+    • Reputation: MALICIOUS
+    • Failed Attempts: 3
+    • Targeted Usernames: root, admin
+    • Attack Pattern: Targeted attack
+
+⚡ Privilege Escalation Analysis:
+  Found 1 privilege escalation event(s):
+
+  • Timestamp: Jan 19 11:15:30
+    User: john
+    Command: john : TTY=pts/0 ; PWD=/home/john ; USER=root ; COMMAND=/bin/bash
+
+📅 Event Timeline Correlation:
+
+  IP: 192.168.1.100 (3 events)
+    • [Jan 19 10:23:15] FAILED_LOGIN: admin
+    • [Jan 19 10:23:20] FAILED_LOGIN: root
+    • [Jan 19 10:23:25] FAILED_LOGIN: admin
+
+  IP: 203.0.113.45 (2 events)
+    • [Jan 19 11:25:45] CONNECTION_CLOSED: N/A
+    • [Jan 19 11:30:10] INVALID_USER: hacker
+
+  IP: 10.0.0.50 (1 events)
+    • [Jan 19 10:25:10] SUCCESSFUL_LOGIN: john
+
+  IP: 45.123.67.89 (1 events)
+    • [Jan 19 10:30:45] FAILED_LOGIN: test
+
+  IP: 10.0.0.75 (1 events)
+    • [Jan 19 10:35:12] SUCCESSFUL_LOGIN: alice
+
+  IP: 198.51.100.23 (1 events)
+    • [Jan 19 11:20:00] FIREWALL_BLOCK: N/A
+
+👤 Most Targeted Usernames:
+  • admin: 2 attempts
+  • john: 2 attempts
+  • root: 1 attempts
+  • test: 1 attempts
+  • alice: 1 attempts
+
+💡 Security Recommendations:
+  [CRITICAL] Block the following IPs immediately:
+    • 192.168.1.100
+  [WARNING] Monitor privilege escalation activities
+    → Review sudo access policies
+    → Enable sudo command logging
+
+======================================================================
+
