@@ -10,7 +10,7 @@
 
 ## Week 1: Foundation & Project 0
 
-### Day 1 - January 19, 2026 ✅
+### Day 0 - January 19, 2026 ✅
 
 **Project Phase:** Project 0 - Understanding the Problem
 
@@ -59,3 +59,37 @@
 - Created repository
 - Added PROJECT_OVERVIEW.md
 - Started PROGRESS_LOG.md
+
+- ## Week 1: Foundation & Project 1
+
+## Day 1: Basic Log Reading ✅
+**Date:** January 20, 2026
+
+### What I Built:
+- ✅ Created project structure
+- ✅ Implemented `LogReader` class
+- ✅ Added sample `auth.log` with SSH/sudo events
+- ✅ Built `read_logs()` method for file I/O
+- ✅ Built `print_logs()` method with formatting
+
+### Code Created:
+- `src/log_reader/parser.py` - Main log reader class
+- `data/sample_logs/auth.log` - Test data
+
+### What I Learned:
+- Python file I/O with `open()` and `readlines()`
+- Exception handling with try/except
+- Class-based programming
+- String formatting with f-strings
+- Working with Linux log formats
+
+### Challenges:
+- Understanding proper file paths
+- Setting up git workflow between web and local
+
+### Testing:
+```bash
+python3 src/log_reader/parser.py
+# Output: Successfully read 10 lines ✅
+```
+
