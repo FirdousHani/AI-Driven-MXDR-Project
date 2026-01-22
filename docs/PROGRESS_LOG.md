@@ -207,7 +207,7 @@ Captured normal activity logs:
 
 | Week | Days Worked | Total Hours | GitHub Commits | Status |
 |------|-------------|-------------|----------------|---------|
-| 1 (Project 1) | 7 | ~8 | 7 | ✅ Complete |
+| 1 (Project 1) | 3 | ~8 | 7 | ✅ Complete |
 | 2 (Project 2) | 1 | 2 | 1 | 🔄 In Progress |
 
 ---
