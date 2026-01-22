@@ -175,6 +175,13 @@ Result: Full-cycle security capability
 
 **"With great power comes great responsibility"** - Use these skills ethically!
 
+**Note :**
+We are making a ssh connection to localhost via loopback, here we need to authenticate right. All these auth logs are stored in the /var/log/auth.log file. 
+Our OS does not store the log files directly, insted it stores in journal form. To get the traditional log format we use journalctl.
+
+`sudo journalctl --no-pager -n 100 > data/normal_logs/baseline_syslog_$(date +%Y%m%d).log` - This prints all the the system logs(not ssh) into the baseline_syslog_<date>.log file
+`sudo journalctl -u ssh --no-pager -n 100 > data/normal_logs/baseline_auth_$(date +%Y%m%d).log` - This prints all the the auth logs of ssh into the baseline_auth_<date>.log file
+
 ---
 
 **Project Start Date:** January 23, 2026  
