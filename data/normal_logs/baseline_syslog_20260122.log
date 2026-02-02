@@ -1,0 +1,100 @@
+Jan 22 14:23:33 kali kernel: 08:53:33.264689 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:33 kali kernel: 08:53:33.265169 dnd           - does not want position messages
+Jan 22 14:23:33 kali kernel: 08:53:33.269910 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_MOVE (0xc9) from host
+Jan 22 14:23:33 kali kernel: 08:53:33.270876 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:33 kali kernel: Sent position event (118 x 681) to window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project') with actions 'XdndActionC
+Jan 22 14:23:33 kali kernel: 08:53:33.289535 dnd       Target window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project')
+Jan 22 14:23:33 kali kernel: 08:53:33.290662 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:33 kali kernel: 08:53:33.291375 dnd           - does not want position messages
+Jan 22 14:23:33 kali kernel: 08:53:33.294858 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_MOVE (0xc9) from host
+Jan 22 14:23:33 kali kernel: 08:53:33.296040 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:33 kali kernel: Sent position event (86 x 649) to window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project') with actions 'XdndActionCo
+Jan 22 14:23:33 kali kernel: 08:53:33.315529 dnd       Target window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project')
+Jan 22 14:23:33 kali kernel: 08:53:33.316362 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:33 kali kernel: 08:53:33.316938 dnd           - does not want position messages
+Jan 22 14:23:33 kali kernel: 08:53:33.322256 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_MOVE (0xc9) from host
+Jan 22 14:23:33 kali kernel: 08:53:33.323999 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:33 kali kernel: Sent position event (73 x 639) to window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project') with actions 'XdndActionCo
+Jan 22 14:23:33 kali kernel: 08:53:33.340823 dnd       Target window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project')
+Jan 22 14:23:33 kali kernel: 08:53:33.341986 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:33 kali kernel: 08:53:33.342696 dnd           - does not want position messages
+Jan 22 14:23:33 kali kernel: 08:53:33.348781 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_MOVE (0xc9) from host
+Jan 22 14:23:33 kali kernel: 08:53:33.350052 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:33 kali kernel: Sent position event (42 x 625) to window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project') with actions 'XdndActionCo
+Jan 22 14:23:33 kali kernel: 08:53:33.368482 dnd       Target window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project')
+Jan 22 14:23:33 kali kernel: 08:53:33.369431 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:33 kali kernel: 08:53:33.370117 dnd           - does not want position messages
+Jan 22 14:23:33 kali kernel: 08:53:33.375144 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_MOVE (0xc9) from host
+Jan 22 14:23:33 kali kernel: 08:53:33.376319 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:33 kali kernel: Sent position event (22 x 617) to window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project') with actions 'XdndActionCo
+Jan 22 14:23:33 kali kernel: 08:53:33.394530 dnd       Target window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project')
+Jan 22 14:23:33 kali kernel: 08:53:33.395525 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:33 kali kernel: 08:53:33.396060 dnd           - does not want position messages
+Jan 22 14:23:33 kali kernel: 08:53:33.399768 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_MOVE (0xc9) from host
+Jan 22 14:23:33 kali kernel: 08:53:33.400952 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:33 kali kernel: Sent position event (12 x 613) to window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project') with actions 'XdndActionCo
+Jan 22 14:23:33 kali kernel: 08:53:33.420805 dnd       Target window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project')
+Jan 22 14:23:33 kali kernel: 08:53:33.421814 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:33 kali kernel: 08:53:33.422690 dnd           - does not want position messages
+Jan 22 14:23:33 kali kernel: 08:53:33.428868 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_LEAVE (0xca) from host
+Jan 22 14:23:36 kali kernel: 08:53:36.482883 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_ENTER (0xc8) from host
+Jan 22 14:23:36 kali kernel: 08:53:36.484287 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:36 kali kernel: Entered new window 0x1800003 ('xfce4-panel'), supports Xdnd version=5
+Jan 22 14:23:36 kali kernel: 08:53:36.487510 dnd       Sent position event (0 x 0) to window 0x1800003 ('xfce4-panel') with actions 'None'
+Jan 22 14:23:36 kali kernel: 08:53:36.507375 dnd       Target window 0x1800003 ('xfce4-panel')
+Jan 22 14:23:36 kali kernel: 08:53:36.507834 dnd           - does not accept data (actions 'None')
+Jan 22 14:23:36 kali kernel: 08:53:36.508317 dnd           - does not want position messages
+Jan 22 14:23:36 kali kernel: 08:53:36.509885 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_MOVE (0xc9) from host
+Jan 22 14:23:36 kali kernel: 08:53:36.511505 dnd       Error: Moving mouse cursor failed: 1 (BadRequest)
+Jan 22 14:23:36 kali kernel: Left old window 0x1800003 ('xfce4-panel'), supported Xdnd version 5
+Jan 22 14:23:36 kali kernel: 08:53:36.515184 dnd       Entered new window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project'), supports Xdnd version
+Jan 22 14:23:36 kali kernel: 08:53:36.516027 dnd       Sent position event (75 x 725) to window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project') 
+Jan 22 14:23:36 kali kernel: 08:53:36.532857 dnd       Target window 0x4200007 ('hani@kali: ~/Documents/AI-Driven-MXDR-Project')
+Jan 22 14:23:36 kali kernel: 08:53:36.533908 dnd           - does accept data (actions 'XdndActionCopy')
+Jan 22 14:23:36 kali kernel: 08:53:36.534385 dnd           - does not want position messages
+Jan 22 14:23:36 kali kernel: 08:53:36.548863 dndHGCM   DnD: Received message HOST_DND_FN_HG_EVT_LEAVE (0xca) from host
+Jan 22 14:23:50 kali virtualbox-guest-utils[657]: 08:53:50.743564 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:24:00 kali virtualbox-guest-utils[657]: 08:54:00.749349 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:24:00 kali kernel: 08:53:50.743564 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:24:01 kali virtualbox-guest-utils[657]: 08:54:01.243735 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:24:01 kali kernel: 08:54:00.749349 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:24:01 kali kernel: 08:54:01.243735 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:24:01 kali virtualbox-guest-utils[657]: 08:54:01.743888 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:25:01 kali CRON[64157]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jan 22 14:25:01 kali CRON[64159]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Jan 22 14:25:01 kali CRON[64157]: pam_unix(cron:session): session closed for user root
+Jan 22 14:28:33 kali virtualbox-guest-utils[657]: 08:58:33.001641 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:28:33 kali kernel: 08:54:01.743888 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:28:33 kali kernel: 08:58:33.001641 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:28:33 kali virtualbox-guest-utils[657]: 08:58:33.495155 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:28:33 kali virtualbox-guest-utils[657]: 08:58:33.993416 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:28:33 kali kernel: 08:58:33.495155 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:32:13 kali kernel: 08:58:33.993416 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:32:18 kali virtualbox-guest-utils[657]: 09:02:18.995131 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:32:18 kali kernel: 09:02:13.272274 SHCLX11   Shared Clipboard: Converting VBox formats 'UNICODETEXT' to 'INVALID' for X11 (idxFmtX11=0, fmtX11=0, 
+Jan 22 14:35:01 kali CRON[69075]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jan 22 14:35:01 kali CRON[69077]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Jan 22 14:35:01 kali CRON[69075]: pam_unix(cron:session): session closed for user root
+Jan 22 14:38:12 kali virtualbox-guest-utils[657]: 09:08:12.243072 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:38:12 kali kernel: 09:02:18.995131 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:38:12 kali kernel: 09:08:12.243072 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:38:12 kali virtualbox-guest-utils[657]: 09:08:12.743501 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:38:13 kali virtualbox-guest-utils[657]: 09:08:13.242566 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:38:13 kali kernel: 09:08:12.743501 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:39:01 kali CRON[70987]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jan 22 14:39:01 kali CRON[70989]: (root) CMD (  [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi)
+Jan 22 14:39:01 kali CRON[70987]: pam_unix(cron:session): session closed for user root
+Jan 22 14:39:01 kali systemd[1]: Starting phpsessionclean.service - Clean php session files...
+Jan 22 14:39:01 kali systemd[1]: phpsessionclean.service: Deactivated successfully.
+Jan 22 14:39:01 kali systemd[1]: Finished phpsessionclean.service - Clean php session files.
+Jan 22 14:41:57 kali kernel: 09:08:13.242566 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:41:58 kali virtualbox-guest-utils[657]: 09:11:57.993989 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:41:58 kali kernel: 09:11:57.993989 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:41:58 kali virtualbox-guest-utils[657]: 09:11:58.493732 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:41:59 kali kernel: 09:11:58.493732 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
+Jan 22 14:41:59 kali virtualbox-guest-utils[657]: 09:11:59.243767 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:45:01 kali CRON[73982]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Jan 22 14:45:01 kali CRON[73985]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Jan 22 14:45:01 kali CRON[73982]: pam_unix(cron:session): session closed for user root
+Jan 22 14:46:19 kali virtualbox-guest-utils[657]: 09:16:19.993566 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUCCESS
+Jan 22 14:46:19 kali kernel: 09:11:59.243767 Timer    VBoxDRMClient: push screen layout data of 1 display(s) to DRM stack, fPartialLayout=false, rc=VINF_SUC
