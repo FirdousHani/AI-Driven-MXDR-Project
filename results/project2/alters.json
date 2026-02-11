@@ -1,0 +1,8 @@
+# Store in results/project3/alerts.json
+{
+  "timestamp": "2026-02-10 14:23:15",
+  "source_ip": "192.168.1.10",
+  "severity": "HIGH",
+  "message": "Unusual connection pattern detected",
+  "anomaly_score": -0.48
+}

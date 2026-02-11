@@ -1,0 +1,260 @@
+**Content:**
+```
+MASTER ATTACK COMPARISON MATRIX
+================================
+Project 2 - Week 2 Analysis
+Date: January 30, 2026
+
+=== THREE ATTACK TYPES COMPARED ===
+
+┌────────────────────────────────────────────────────────────────────┐
+│                     ATTACK CHARACTERISTICS                         │
+├──────────────┬─────────────────┬─────────────────┬─────────────────┤
+│ Attribute    │ Port Scan       │ Brute Force     │ Vuln Scan       │
+├──────────────┼─────────────────┼─────────────────┼─────────────────┤
+│ Day          │ Day 2           │ Day 3           │ Day 4           │
+│ Tool         │ nmap            │ hydra           │ nikto           │
+│ Target       │ Network ports   │ SSH passwords   │ Web server      │
+│ Port         │ All (1-65535)   │ 22 (SSH)        │ 80 (HTTP)       │
+│ Speed        │ 3,333/sec       │ ~20/min         │ ~26/sec         │
+│ Volume       │ 1000 attempts   │ 20-100 attempts │ 500-8000 req    │
+│ Duration     │ 0.30 seconds    │ 60 seconds      │ 300 seconds     │
+│ Success      │ 4 ports found   │ 0% (strong pwd) │ Vulns found     │
+│ Pattern      │ Sequential      │ Repeated        │ Systematic      │
+│ Evidence     │ Sudo logs       │ Auth logs       │ Web logs        │
+│ Key Indicator│ nmap in command │ Failed password │ 404 errors      │
+│ User-Agent   │ N/A             │ N/A             │ Nikto/2.5.0     │
+│ Kill Chain   │ Reconnaissance  │ Initial Access  │ Reconnaissance  │
+│ Severity     │ Medium          │ High            │ Medium-High     │
+│ Stealth      │ Medium (SYN)    │ Low (logged)    │ Very Low (loud) │
+└──────────────┴─────────────────┴─────────────────┴─────────────────┘
+
+=== LOG SIGNATURES ===
+
+PORT SCAN LOG SIGNATURE:
+------------------------
+Location: journalctl (sudo/auth logs)
+Pattern:
+  Jan 30 11:10:11 kali sudo[15949]: COMMAND=/usr/bin/nmap -sS localhost
+  Jan 30 11:10:11 kali sudo[15949]: pam_unix(sudo:session): session opened
+  Jan 30 11:10:11 kali sudo[15949]: pam_unix(sudo:session): session closed
+
+Characteristics:
+✓ Tool name visible (nmap)
+✓ Session opened/closed immediately (<1 sec)
+✓ Command with flags captured
+✓ Executed with sudo (privilege escalation)
+
+Detection:
+  grep "COMMAND.*nmap" → Instant detection
+
+BRUTE FORCE LOG SIGNATURE:
+---------------------------
+Location: journalctl -u ssh (SSH auth logs)
+Pattern:
+  Jan 30 12:00:01 kali sshd[1234]: Failed password for kali from 127.0.0.1
+  Jan 30 12:00:04 kali sshd[1235]: Failed password for kali from 127.0.0.1
+  Jan 30 12:00:07 kali sshd[1236]: Failed password for kali from 127.0.0.1
+  ...repeats 20+ times
+
+Characteristics:
+✓ "Failed password" repeated
+✓ Same username (kali)
+✓ Same source IP (127.0.0.1)
+✓ Regular timing (~3 sec intervals)
+✓ Many sequential attempts
+
+Detection:
+  Count failures: if >5 in 60 sec → Brute force
+
+VULNERABILITY SCAN LOG SIGNATURE:
+----------------------------------
+Location: /var/log/apache2/access.log (Web server logs)
+Pattern:
+  127.0.0.1 - - [30/Jan:13:00:01] "GET /admin/ HTTP/1.1" 404 196 "-" "Nikto/2.5.0"
+  127.0.0.1 - - [30/Jan:13:00:01] "GET /backup/ HTTP/1.1" 404 196 "-" "Nikto/2.5.0"
+  127.0.0.1 - - [30/Jan:13:00:02] "GET /config.php HTTP/1.1" 404 196 "-" "Nikto/2.5.0"
+  ...hundreds more
+
+Characteristics:
+✓ User-Agent reveals tool (Nikto/2.5.0)
+✓ Many 404 errors (>80% of requests)
+✓ Suspicious paths (/admin, /backup, /config)
+✓ High volume (100+ req/min)
+✓ Same source IP
+
+Detection:
+  404 error rate >50% AND User-Agent contains scanner name
+
+=== DETECTION RULES ===
+
+Rule 1: Port Scan Detection
+IF log contains "COMMAND" AND "nmap"
+   AND session_duration < 2 seconds
+THEN alert = "Port scan detected"
+
+Rule 2: Brute Force Detection
+IF failed_login_count > 5
+   AND time_window = 60 seconds
+   AND same_username = true
+   AND same_source_ip = true
+THEN alert = "Brute force attack detected"
+
+Rule 3: Vulnerability Scan Detection
+IF http_requests > 100
+   AND time_window = 60 seconds
+   AND error_404_rate > 50%
+   AND (user_agent CONTAINS 'nikto' OR 'scanner' OR 'nmap')
+THEN alert = "Vulnerability scan detected"
+
+=== ATTACK TIMELINE ===
+
+Week 2 Attack Sequence:
+Day 1 (Setup)     → Lab configured, baseline captured
+Day 2 (11:10)     → Port scan executed (0.30 sec)
+                    Found: Ports 22, 80, 5432, 32769 open
+Day 3 (12:00)     → Brute force SSH (60 sec)
+                    Result: All 20 passwords failed
+Day 4 (13:00)     → Vuln scan web (300 sec)
+                    Result: Default files, missing headers
+Day 5 (Today)     → Analysis and comparison
+
+Attack Kill Chain Progress:
+Phase 1: Reconnaissance → COMPLETE (Days 2, 4)
+Phase 2: Initial Access → ATTEMPTED (Day 3 - failed)
+Phase 3+: Not executed (educational lab only)
+
+=== COMPARISON BY METRIC ===
+
+Fastest Attack:
+  Port Scan (0.30 seconds for 1000 ports)
+
+Most Requests:
+  Vuln Scan (500-8000 HTTP requests)
+
+Most Failures:
+  Brute Force (100% failed until correct password)
+
+Easiest to Detect:
+  Vuln Scan (User-Agent + 404s)
+
+Most Stealthy:
+  Port Scan (SYN scan, minimal logging on localhost)
+
+Highest Risk:
+  Brute Force (if successful = full access)
+
+=== LOG VOLUME COMPARISON ===
+
+Baseline (Before attacks):
+- Auth logs: ~50 lines
+- Web logs: ~10 requests
+- Kernel logs: ~50 lines
+
+After Port Scan:
+- Auth logs: +2 lines (sudo commands)
+- Kernel logs: +1 line (mostly quiet on localhost)
+- Increase: Minimal (2-5x)
+
+After Brute Force:
+- Auth/SSH logs: +20 lines (failed attempts)
+- Increase: Moderate (20-40x)
+
+After Vuln Scan:
+- Web logs: +500-8000 lines (HTTP requests)
+- Increase: MASSIVE (50-800x)
+
+Conclusion: Vuln scan = loudest, port scan = quietest
+
+=== REAL-WORLD CORRELATION ===
+
+In production environment, seeing all three indicates:
+1. Attacker performed reconnaissance (port + vuln scans)
+2. Attempted to gain access (brute force)
+3. Likely planning exploitation phase next
+
+Response priority:
+1. Block source IP immediately
+2. Patch found vulnerabilities
+3. Enable fail2ban (prevent brute force)
+4. Rate limit network/web requests
+5. Alert security team
+6. Investigate if authorized pen test
+
+=== DEFENSE EFFECTIVENESS ===
+
+What protected us:
+✓ Strong SSH password (brute force failed)
+✓ No default credentials
+✓ Updated Apache (fewer vulns)
+✓ Monitoring (we saw everything)
+
+What didn't protect (lab gaps):
+✗ No fail2ban (should block after 3-5 failures)
+✗ No rate limiting (allowed 8000 requests)
+✗ No WAF (web application firewall)
+✗ No IDS/IPS (intrusion detection/prevention)
+
+If this was production:
+- Fail2ban would block brute force after 3 tries
+- WAF would block vuln scan after 100 requests
+- IDS would alert on port scan pattern
+- SIEM would correlate all three attacks
+
+=== KEY LEARNINGS ===
+
+Pattern Recognition:
+Each attack type has UNIQUE signature - no overlap
+Can distinguish by: speed, log type, evidence pattern
+
+Detection Hierarchy:
+Application logs (web) > Auth logs > Network logs
+Because: More context, clearer evidence, designed for tracking
+
+Tool Signatures:
+Tools often reveal themselves:
+- nmap in command logs
+- Nikto in User-Agent
+- Hydra not visible but pattern obvious
+
+Attack Phases:
+All three were reconnaissance/access phases
+Real damage comes in later phases (exploitation+)
+
+Defense Priority:
+1. Update/patch (reduce vulnerabilities)
+2. Strong passwords (stop brute force)
+3. Monitoring (detect attacks)
+4. Automated blocking (fail2ban, WAF)
+5. Principle of least privilege
+
+=== MEMORIZATION GUIDE ===
+
+Remember this table:
+
+Attack      | Evidence      | Detection
+------------|---------------|------------------
+Port Scan   | sudo logs     | grep "nmap"
+Brute Force | failed logins | count failures >5
+Vuln Scan   | 404 errors    | error rate >50%
+
+One sentence each:
+- Port scan = Tool execution in logs
+- Brute force = Many password failures
+- Vuln scan = HTTP requests to non-existent paths
+
+This is all you need to remember! ⭐
+
+=== NEXT STEPS ===
+
+Day 6: Documentation & Playbook Creation
+Day 7: Integration with Project 1 Parser
+Final: Complete Project 2, ready for Project 3
+
+---
+Analysis completed: January 30, 2026
+Evidence reviewed: 15+ log files
+Attacks compared: 3
+Signatures documented: 3
+Detection rules created: 3
+Ready for: Day 6 (Documentation)

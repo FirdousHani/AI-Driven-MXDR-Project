@@ -387,5 +387,5 @@ def perform_security_analysis(entries: List[Dict[str, str]], colorize: bool = Tr
 
 # Example usage
 if __name__ == "__main__":
-    log_path = "data/sample_logs/auth.log"
+    log_path = "data/attack_logs/after_nikto.log"
     entries = parse_auth_log(log_path, output_file="data/sample_logs/formatted_auth.log")
